@@ -6,7 +6,7 @@ package com.soccer.api.soccer_app.com.soccer.api.soccer_app.model;
 
 public class Teams {
 
-    private String links;
+    private String [] links;
     private String name;
     private String shortName;
     private String code;
@@ -19,7 +19,7 @@ public class Teams {
     public Teams() {
 
     }
-    public String getLinks() {
+    public String [] getLinks() {
         return links;
     }
 
@@ -90,8 +90,5 @@ public class Teams {
     public void setCrestUrl(String crestUrl) {
         this.crestUrl = crestUrl;
     }
-
-
-
 
 }
