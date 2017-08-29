@@ -10,7 +10,7 @@ public class Teams {
     private String name;
     private String shortName;
     private String code;
-    private double squadMarketValue;
+    private String squadMarketValue;
     private String crestUrl;
     private String self;
     private String fixtures;
@@ -51,11 +51,11 @@ public class Teams {
         this.players = players;
     }
 
-    public double getSquadMarketValue() {
+    public String getSquadMarketValue() {
         return squadMarketValue;
     }
 
-    public void setSquadMarketValue(double squadMarketValue) {
+    public void setSquadMarketValue(String squadMarketValue) {
         this.squadMarketValue = squadMarketValue;
     }
 

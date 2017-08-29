@@ -45,9 +45,8 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         holder.setName(teams.getName());
         holder.setCode(teams.getCode());
         holder.setName(teams.getShortName());
-        holder.setSquadeMarketValue(String.valueOf(teams.getSquadMarketValue()));
+        holder.setSquadeMarketValue(teams.getSquadMarketValue());
         holder.setCrestUrl(teams.getCrestUrl());
-
 
     }
 

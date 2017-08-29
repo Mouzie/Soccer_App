@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        mTeamRecylerView = (RecyclerView)findViewById(R.id.teams_recylcer_view);
+
+        mTeamRecylerView = (RecyclerView)findViewById(R.id.items_list);
         mTeamRecylerView.setLayoutManager(new LinearLayoutManager(this));
         mTeamRecylerView.setHasFixedSize(true);
         mTeamsCollections = new ArrayList<>();
@@ -95,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray teamsArray = jsonOBJ.getJSONArray("teams");
 
                 for(int i = 0; i < teamsArray.length(); i++){
-                    Log.v("Team", i + "");
+                    Log.v("Success__", i + "");
                     //Array to hold the links
                     String [] links = new String[3];
                     String name;
                     String code;
                     String shortName;
-                    double squadMarketValue;
+                    String squadMarketValue;
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     name = jTeams.getString("name");
                     code = jTeams.getString("code");
                     shortName = jTeams.getString("shortName");
-                    squadMarketValue = jTeams.getDouble("squadMarketValue");
+                    squadMarketValue = jTeams.getString("squadMarketValue");
                     crestUrl = jTeams.getString("crestUrl");
 
                     //Testing links
