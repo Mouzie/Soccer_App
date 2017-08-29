@@ -26,7 +26,6 @@
 
     <TextView
         android:id="@+id/team_name"
-        android:text="team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -46,21 +45,11 @@
         android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
         <TextView
             android:textSize="20sp"
-            android:text="team"
             android:textStyle="bold"
             android:id="@+id/short_name"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/squadMarketValue"
             android:layout_weight="1"
             android:gravity="bottom"
             android:layout_marginLeft="16dp"
