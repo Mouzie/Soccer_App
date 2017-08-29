@@ -6,12 +6,65 @@ package com.soccer.api.soccer_app.com.soccer.api.soccer_app.model;
 
 public class Teams {
 
+    private String links;
     private String name;
-    private String coach;
+    private String shortName;
+    private String code;
+    private double squadMarketValue;
     private String crestUrl;
+    private String self;
+    private String fixtures;
+    private String players;
 
     public Teams() {
 
+    }
+    public String getLinks() {
+        return links;
+    }
+
+    public void setLinks(String[] links) {
+        this.links = links;
+    }
+
+    public String getSelf() {
+        return self;
+    }
+
+    public void setSelf(String self) {
+        this.self = self;
+    }
+
+    public String getFixtures() {
+        return fixtures;
+    }
+
+    public void setFixtures(String fixtures) {
+        this.fixtures = fixtures;
+    }
+
+    public String getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(String players) {
+        this.players = players;
+    }
+
+    public double getSquadMarketValue() {
+        return squadMarketValue;
+    }
+
+    public void setSquadMarketValue(double squadMarketValue) {
+        this.squadMarketValue = squadMarketValue;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getName() {
@@ -22,12 +75,12 @@ public class Teams {
         this.name = name;
     }
 
-    public String getCoach() {
-        return coach;
+    public String getCode() {
+        return code;
     }
 
-    public void setCoach(String coach) {
-        this.coach = coach;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getCrestUrl() {

@@ -96,20 +96,38 @@ public class MainActivity extends AppCompatActivity {
 
                 for(int i = 0; i < teamsArray.length(); i++){
                     Log.v("Team", i + "");
+                    //Array to hold the links
+                    String [] links = new String[3];
                     String name;
-                    String coach;
+                    String code;
+                    String shortName;
+                    double squadMarketValue;
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
-                    jTeams = jTeams.getJSONObject("teams");
+                    JSONObject jLinks = jTeams.getJSONObject("_links");
 
                     name = jTeams.getString("name");
-                    coach = jTeams.getString("coach");
+                    code = jTeams.getString("code");
+                    shortName = jTeams.getString("shortName");
+                    squadMarketValue = jTeams.getDouble("squadMarketValue");
                     crestUrl = jTeams.getString("crestUrl");
+
+                    //Testing links
+                    JSONObject jSelf = jLinks.getJSONObject("self");
+                    JSONObject jFixtures = jLinks.getJSONObject("fixtures");
+                    JSONObject jPlayers = jLinks.getJSONObject("players");
+
+                    links[0] = jSelf.getString("href");
+                    links[1] = jFixtures.getString("href");
+                    links[2] = jPlayers.getString("href");
 
                     Teams teams = new Teams();
                     teams.setName(name);
-                    teams.setCoach(coach);
+                    teams.setCode(code);
+                    teams.setLinks(links);
+                    teams.setShortName(shortName);
+                    teams.setSquadMarketValue(squadMarketValue);
                     teams.setCrestUrl(crestUrl);
 
                     //Adding items to collections team.

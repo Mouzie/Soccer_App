@@ -25,21 +25,39 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_weight="1"
-        android:text="Arsenal"
         android:textSize="20sp"
         android:textStyle="bold" />
+
     <TextView
         android:textSize="20sp"
         android:textStyle="bold"
-        android:id="@+id/team_coach"
-        android:text="Coach"
+        android:id="@+id/team_code"
         android:layout_weight="1"
         android:gravity="bottom"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+        <TextView
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/short_name"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/squadMarketValue"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

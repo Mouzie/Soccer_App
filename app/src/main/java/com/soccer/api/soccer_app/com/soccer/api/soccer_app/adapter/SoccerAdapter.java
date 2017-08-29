@@ -1,15 +1,14 @@
 package com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 
@@ -44,10 +43,12 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
         //Holder will hold set both team and coach names.
         holder.setName(teams.getName());
-        holder.setName(teams.getCoach());
+        holder.setCode(teams.getCode());
+        holder.setName(teams.getShortName());
+        holder.setSquadeMarketValue(String.valueOf(teams.getSquadMarketValue()));
+        holder.setCrestUrl(teams.getCrestUrl());
 
-        //Glide implementation for images
-        //Will be implemented soon
+
     }
 
     @Override
@@ -59,10 +60,9 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     public class SoccerHolder extends RecyclerView.ViewHolder{
 
-        //Items found in the teams layou
+        //Items found in the teams layout
         ImageView TeamsImgView;
-        TextView TeamsTxtView;
-        TextView CoachTxtView;
+        TextView CodeTxtView, squadeMarketValueView, TeamsTxtView;
 
 
         public SoccerHolder(View itemView) {
@@ -71,12 +71,15 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
             //Content from Teams Layout
             TeamsImgView = (ImageView) itemView.findViewById(R.id.soccer_team);
             TeamsTxtView = (TextView) itemView.findViewById(R.id.team_name);
-            CoachTxtView = (TextView) itemView.findViewById(R.id.team_coach);
+            CodeTxtView = (TextView) itemView.findViewById(R.id.team_code);
+            squadeMarketValueView = (TextView) itemView.findViewById(R.id.squadMarketValue);
 
         }
 
         public void setName(String name){ TeamsTxtView.setText(name);}
-        public void setCoach(String coach) { CoachTxtView.setText(coach);}
+        public void setCode(String code) { CodeTxtView.setText(code);}
+        public void setSquadeMarketValue(String squadeMarketValue) { squadeMarketValueView.setText(squadeMarketValue);}
+        public void setCrestUrl(String crestUrl){TeamsImgView.setImageURI(Uri.parse(crestUrl)); }
     }
 
 }
