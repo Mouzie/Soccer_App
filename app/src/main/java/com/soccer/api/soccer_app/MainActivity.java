@@ -12,12 +12,15 @@ import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.SoccerAdapter
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
+        new FetchData().execute();
     }
 
     private void init() {
@@ -101,12 +105,40 @@ public class MainActivity extends AppCompatActivity {
 
                     name = jTeams.getString("name");
                     coach = jTeams.getString("coach");
-                    //Crest URL to be sorted out soon.
+                    crestUrl = jTeams.getString("crestUrl");
 
+                    Teams teams = new Teams();
+                    teams.setName(name);
+                    teams.setCoach(coach);
+                    teams.setCrestUrl(crestUrl);
 
-                    
+                    //Adding items to collections team.
+                    mTeamsCollections.add(teams);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("MainActivity", "Error closing stream", e);
+                    }
                 }
             }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid){
+            mAdapter.notifyDataSetChanged();
         }
     }
 }
