@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -49,9 +49,14 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         //holder.setSquadeMarketValue(teams.getSquadMarketValue());
         holder.setCrestUrl(teams.getCrestUrl());
 
+        //Picasso for image loading
+
+
         //Glide implementation for image view
-        Glide.with(mActivity)
+        Picasso.with(mActivity)
                 .load(teams.getCrestUrl())
+                .resize(50, 50)
+                .centerCrop()
                 .into(holder.TeamsImgView);
 
     }

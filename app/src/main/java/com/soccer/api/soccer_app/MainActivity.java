@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 url = new URL(builtUri.toString());
                 urlConnection = (HttpURLConnection)url.openConnection();
                 urlConnection.setRequestMethod("GET");
-                urlConnection.setRequestProperty("user-key","1a7000e80c0f423f844dd6e4e6e74418");
+                urlConnection.setRequestProperty("X-Auth-Token","6c088829710d4f96843247c63faaec45");
                 urlConnection.connect();
 
                 InputStream inputStream = urlConnection.getInputStream();
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     String name;
                     String code;
                     String shortName;
-                    String squadMarketValue;
+                    //String squadMarketValue;
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                     name = jTeams.getString("name");
                     code = jTeams.getString("code");
                     shortName = jTeams.getString("shortName");
-                    squadMarketValue = jTeams.getString("squadMarketValue");
+                    //squadMarketValue = jTeams.getString("squadMarketValue");
                     crestUrl = jTeams.getString("crestUrl");
-
+                    Log.v("Images", crestUrl);
                     //Testing links
                     JSONObject jSelf = jLinks.getJSONObject("self");
                     JSONObject jFixtures = jLinks.getJSONObject("fixtures");
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     teams.setCode(code);
                     teams.setLinks(links);
                     teams.setShortName(shortName);
-                    teams.setSquadMarketValue(squadMarketValue);
+                    //teams.setSquadMarketValue(squadMarketValue);
                     teams.setCrestUrl(crestUrl);
 
                     //Adding items to collections team.

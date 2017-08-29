@@ -2,5 +2,5 @@
     <string name="app_name">Soccer_App</string>
 
     <!-- String used to access the Soccer APi-->
-    <string name="football_api"> http://api.football-data.org/v1/competitions/445/teams</string>
+    <string name="football_api">http://api.football-data.org/v1/competitions/445/teams</string>
 </resources>
