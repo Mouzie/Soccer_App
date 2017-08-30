@@ -38,7 +38,7 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     //Implementing onClick for imageView
     public interface OnItemClickListener {
-        void onItemClick(Teams teams);
+        void onItemClick(Teams teams,String uri ,String teamName, String teamCode, String teamSN, String teamValue);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
         //Items found in the teams layout
         ImageView TeamsImgView;
-        TextView CodeTxtView, TeamsTxtView, ShortName;
+        TextView CodeTxtView, TeamsTxtView, ShortName, SquadeMarketValue;
 
 
         public SoccerHolder(View itemView) {
@@ -100,24 +100,34 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
             TeamsTxtView = (TextView) itemView.findViewById(R.id.team_name);
             CodeTxtView = (TextView) itemView.findViewById(R.id.team_code);
             ShortName = (TextView) itemView.findViewById(R.id.short_name);
-            //squadeMarketValueView = (TextView) itemView.findViewById(R.id.squadMarketValue);
+            //SquadeMarketValue = (TextView) itemView.findViewById(R.id.market_value);
 
         }
 
         public void setName(String name){ TeamsTxtView.setText(name);}
         public void setCode(String code) { CodeTxtView.setText(code);}
-        //public void setSquadeMarketValue(String squadeMarketValue) { squadeMarketValueView.setText(squadeMarketValue);}
+        //public void setSquadeMarketValue(String squadeMarketValue) { SquadeMarketValue.setText(squadeMarketValue);}
         public void setCrestUrl(String crestUrl){TeamsImgView.setImageURI(Uri.parse(crestUrl)); }
         public void setShortName(String shortName){ShortName.setText(shortName);}
 
         //Method called to aid with bind
         public void bind(final Teams teams, final OnItemClickListener listener) {
+            TeamsImgView.setImageURI(Uri.parse(teams.getCrestUrl()));
             TeamsTxtView.setText(teams.getName());
+            CodeTxtView.setText(teams.getCode());
+            ShortName.setText(teams.getShortName());
+            //SquadeMarketValue.setText(teams.getSquadMarketValue());
+
             Glide.with(mActivity).load(teams.getCrestUrl()).into(TeamsImgView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(teams);
+                    listener.onItemClick(teams,
+                            teams.getCrestUrl(),
+                            teams.getName(),
+                            teams.getCode(),
+                            teams.getShortName(),
+                            teams.getSquadMarketValue());
                 }
             });
         }

@@ -31,8 +31,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    final Intent move = new Intent(MainActivity.this, TeamsActivity.class);
-
     private RecyclerView mTeamRecylerView;
     private SoccerAdapter mAdapter;
     private ArrayList<Teams> mTeamsCollections;
@@ -46,9 +44,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        final Intent move = new Intent(MainActivity.this, TeamsActivity.class);
         init();
+        mAdapter = new SoccerAdapter(mTeamsCollections, this, new SoccerAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(Teams teams, String uri, String teamName, String teamCode, String teamSN, String teamValue) {
+//                Toast.makeText(MainActivity.this,"It works", Toast.LENGTH_SHORT).show();
+                move.putExtra("image",uri);
+                move.putExtra("team_name",teamName);
+                move.putExtra("code", teamCode);
+                move.putExtra("short_name", teamSN);
+                move.putExtra("marketValue", teamValue);
+                startActivity(move);
+            }
+        });
+        mTeamRecylerView.setAdapter(mAdapter);
         new FetchData().execute();
+
     }
 
     private void init() {
@@ -57,18 +70,6 @@ public class MainActivity extends AppCompatActivity {
         mTeamRecylerView.setLayoutManager(new LinearLayoutManager(this));
         mTeamRecylerView.setHasFixedSize(true);
         mTeamsCollections = new ArrayList<>();
-
-        mAdapter = new SoccerAdapter(mTeamsCollections, this, new SoccerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Teams teams) {
-                Toast.makeText(MainActivity.this,"It works", Toast.LENGTH_SHORT).show();
-
-                //Moving one item at a time
-
-
-            }
-        });
-        mTeamRecylerView.setAdapter(mAdapter);
     }
 
     //Class used to fetch data
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     String name;
                     String code;
                     String shortName;
-                    //String squadMarketValue;
+                    String squadMarketValue;
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     name = jTeams.getString("name");
                     code = jTeams.getString("code");
                     shortName = jTeams.getString("shortName");
-                    //squadMarketValue = jTeams.getString("squadMarketValue");
+                    squadMarketValue = jTeams.getString("squadMarketValue");
                     crestUrl = jTeams.getString("crestUrl");
                     Log.v("Images", crestUrl);
                     //Testing links
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     teams.setCode(code);
                     teams.setLinks(links);
                     teams.setShortName(shortName);
-                    //teams.setSquadMarketValue(squadMarketValue);
+                    teams.setSquadMarketValue(squadMarketValue);
                     teams.setCrestUrl(crestUrl);
 
                     //Adding items to collections team.

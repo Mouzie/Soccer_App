@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.TeamsActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/team_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/team_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/short_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/market_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Floating Button for player and fixtures-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:clickable="true"
+        android:src="@drawable/player"
+        app:backgroundTint="@android:color/transparent"
+        app:rippleColor="@color/cardview_shadow_end_color" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fixtures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/player"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_toLeftOf="@+id/player"
+        android:layout_toStartOf="@+id/player"
+        android:clickable="true"
+        android:src="@drawable/player"
+        app:backgroundTint="@android:color/transparent"
+        app:rippleColor="@color/cardview_shadow_end_color" />
+
+
+</RelativeLayout>
