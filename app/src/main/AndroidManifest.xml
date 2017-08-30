@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".com.soccer.api.soccer_app.TeamsActivity"></activity>
+        <activity android:name=".TeamsActivity" />
+        <activity android:name=".PlayersActivity"></activity>
     </application>
 
 </manifest>

@@ -10,9 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.TeamsActivity;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.SoccerAdapter;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 

@@ -26,8 +26,6 @@ dependencies {
     })
 
     //Imports that will be used
-    
-
 
 
     compile 'com.android.support:design:26.+'
