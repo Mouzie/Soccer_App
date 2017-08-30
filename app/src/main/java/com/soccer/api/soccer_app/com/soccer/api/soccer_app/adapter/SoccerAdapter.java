@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.attr.name;
 
 /**
  * Created by admin on 2017/08/28.
@@ -24,10 +28,17 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
     //Will hold the information from the class Teams
     private ArrayList<Teams> mData;
     private Activity mActivity;
+    private final OnItemClickListener listener;
 
-    public SoccerAdapter(ArrayList<Teams> data, Activity activity) {
+    public SoccerAdapter(ArrayList<Teams> data, Activity activity,  OnItemClickListener listener) {
         this.mData = data;
         this.mActivity = activity;
+        this.listener = listener;
+    }
+
+    //Implementing onClick for imageView
+    public interface OnItemClickListener {
+        void onItemClick(Teams teams);
     }
 
     @Override
@@ -42,6 +53,9 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         //Getting data from the class Teams
         Teams teams = mData.get(position);
 
+        //Binding information to view
+        holder.bind(teams, listener);
+
         //Holder will hold set both team and coach names.
         holder.setName(teams.getName());
         holder.setCode(teams.getCode());
@@ -49,17 +63,18 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         //holder.setSquadeMarketValue(teams.getSquadMarketValue());
         holder.setCrestUrl(teams.getCrestUrl());
 
-        //Picasso for image loading
-
+        //Bitmap Factory
+//        Bitmap bitmap = BitmapFactory.decodeStream(openInputStream(teams.getCrestUrl()));
+//        holder.TeamsImgView.setImageBitmap(bitmap);
 
         //Glide implementation for image view
-        Picasso.with(mActivity)
+        Glide.with(mActivity)
+                //.resize(250, 250)
                 .load(teams.getCrestUrl())
-                .resize(50, 50)
-                .centerCrop()
                 .into(holder.TeamsImgView);
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -67,6 +82,8 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
             return 0;
         return mData.size();
     }
+
+
 
     public class SoccerHolder extends RecyclerView.ViewHolder{
 
@@ -92,6 +109,18 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         //public void setSquadeMarketValue(String squadeMarketValue) { squadeMarketValueView.setText(squadeMarketValue);}
         public void setCrestUrl(String crestUrl){TeamsImgView.setImageURI(Uri.parse(crestUrl)); }
         public void setShortName(String shortName){ShortName.setText(shortName);}
+
+        //Method called to aid with bind
+        public void bind(final Teams teams, final OnItemClickListener listener) {
+            TeamsTxtView.setText(teams.getName());
+            Glide.with(mActivity).load(teams.getCrestUrl()).into(TeamsImgView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(teams);
+                }
+            });
+        }
     }
 
 }

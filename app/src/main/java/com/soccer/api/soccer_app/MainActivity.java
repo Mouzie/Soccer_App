@@ -1,5 +1,6 @@
 package com.soccer.api.soccer_app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.TeamsActivity;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.SoccerAdapter;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 
@@ -26,9 +31,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    final Intent move = new Intent(MainActivity.this, TeamsActivity.class);
+
     private RecyclerView mTeamRecylerView;
     private SoccerAdapter mAdapter;
     private ArrayList<Teams> mTeamsCollections;
+
+    //OnClick Listeners for activity
+    ImageView imageView;
+    TextView textView;
 
 
     @Override
@@ -46,7 +57,17 @@ public class MainActivity extends AppCompatActivity {
         mTeamRecylerView.setLayoutManager(new LinearLayoutManager(this));
         mTeamRecylerView.setHasFixedSize(true);
         mTeamsCollections = new ArrayList<>();
-        mAdapter = new SoccerAdapter(mTeamsCollections, this);
+
+        mAdapter = new SoccerAdapter(mTeamsCollections, this, new SoccerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Teams teams) {
+                Toast.makeText(MainActivity.this,"It works", Toast.LENGTH_SHORT).show();
+
+                //Moving one item at a time
+
+
+            }
+        });
         mTeamRecylerView.setAdapter(mAdapter);
     }
 
@@ -119,9 +140,6 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jFixtures = jLinks.getJSONObject("fixtures");
                     JSONObject jPlayers = jLinks.getJSONObject("players");
 
-                    links[0] = jSelf.getString("href");
-                    links[1] = jFixtures.getString("href");
-                    links[2] = jPlayers.getString("href");
 
                     Teams teams = new Teams();
                     teams.setName(name);
