@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 move.putExtra("team_name",teamName);
                 move.putExtra("code", teamCode);
                 move.putExtra("short_name", teamSN);
-                move.putExtra("marketValue", teamValue);
+                move.putExtra("team_player", teams.getLinks());
+                //move.putExtra("marketValue", teamValue);
                 startActivity(move);
             }
         });
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 reader = new BufferedReader(new InputStreamReader(inputStream));
-
                 String line;
 
                 while ((line = reader.readLine()) != null){
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray teamsArray = jsonOBJ.getJSONArray("teams");
 
                 for(int i = 0; i < teamsArray.length(); i++){
-                    Log.v("Success__", i + "");
+                    Log.v("Success", i + "");
                     //Array to hold the links
                     String [] links = new String[3];
                     String name;
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
+
                     JSONObject jLinks = jTeams.getJSONObject("_links");
 
                     name = jTeams.getString("name");
@@ -136,8 +137,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.v("Images", crestUrl);
                     //Testing links
                     JSONObject jSelf = jLinks.getJSONObject("self");
+                    Log.v("Fixtures", jLinks.toString());
                     JSONObject jFixtures = jLinks.getJSONObject("fixtures");
                     JSONObject jPlayers = jLinks.getJSONObject("players");
+                    //Log.v("Players", jPlayers.toString());
 
 
                     Teams teams = new Teams();

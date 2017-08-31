@@ -68,10 +68,10 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 //        holder.TeamsImgView.setImageBitmap(bitmap);
 
         //Glide implementation for image view
-        Glide.with(mActivity)
-                //.resize(250, 250)
-                .load(teams.getCrestUrl())
-                .into(holder.TeamsImgView);
+//        Glide.with(mActivity)
+//                //.resize(250, 250)
+//                .load(teams.getCrestUrl())
+//                .into(holder.TeamsImgView);
 
     }
 

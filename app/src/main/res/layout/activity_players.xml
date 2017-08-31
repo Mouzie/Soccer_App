@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soccer.api.soccer_app.PlayersActivity">
+    tools:context="com.soccer.api.soccer_app.MainActivity"
+    tools:listitem="@layout/players"
+    android:id="@+id/players_layout">
 
-
-
-</android.support.v7.widget.CardView>
+</android.support.v7.widget.RecyclerView>

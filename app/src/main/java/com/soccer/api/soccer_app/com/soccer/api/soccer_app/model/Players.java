@@ -8,13 +8,13 @@ public class Players {
 
     private String playerName;
     private String position;
-    private int jerseyNumber;
+    private String jerseyNumber;
     private String dateOfBirth;
     private String nationality;
     private String contractUntil;
     private String marketValue;
 
-    public Players(String playerName, String position, int jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue) {
+    public Players(String playerName, String position, String jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue) {
         this.playerName = playerName;
         this.position = position;
         this.jerseyNumber = jerseyNumber;
@@ -44,11 +44,11 @@ public class Players {
         this.position = position;
     }
 
-    public int getJerseyNumber() {
+    public String getJerseyNumber() {
         return jerseyNumber;
     }
 
-    public void setJerseyNumber(int jerseyNumber) {
+    public void setJerseyNumber(String jerseyNumber) {
         this.jerseyNumber = jerseyNumber;
     }
 

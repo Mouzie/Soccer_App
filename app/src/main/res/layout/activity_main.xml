@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.soccer.api.soccer_app.MainActivity"
     android:id="@+id/items_list"
-    tools:listitem="@layout/teams_layout"
-  >
+    tools:listitem="@layout/teams_layout">
 
 </android.support.v7.widget.RecyclerView>
