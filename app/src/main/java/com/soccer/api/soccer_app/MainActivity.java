@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(Teams teams, String uri, String teamName, String teamCode, String teamSN, String teamValue) {
-//                Toast.makeText(MainActivity.this,"It works", Toast.LENGTH_SHORT).show();
                 move.putExtra("image",uri);
                 move.putExtra("team_name",teamName);
                 move.putExtra("code", teamCode);
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            //API is consumed using the string located in values/strings.xml file.
             Uri builtUri = Uri.parse(getString(R.string.football_api));
             URL url;
             try{

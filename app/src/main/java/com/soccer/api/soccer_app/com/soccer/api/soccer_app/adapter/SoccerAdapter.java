@@ -49,10 +49,7 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         //Getting data from the class Teams
         Teams teams = mData.get(position);
 
-        //Binding information to view
         holder.bind(teams, listener);
-
-        //Holder will hold set both team and coach names.
         holder.setName(teams.getName());
         holder.setCrestUrl(teams.getCrestUrl());
 

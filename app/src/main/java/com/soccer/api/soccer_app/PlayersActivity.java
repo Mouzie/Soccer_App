@@ -10,8 +10,8 @@ import org.w3c.dom.Text;
 
 public class PlayersActivity extends AppCompatActivity {
 
-    TextView playerName, position,jerseyNumber, dateOfBirth,nationality,contractUntil,marketValue;
-    String pName, pPosition, pJerseyNumber, pDateOfBirth, pNationality, pContractUntil, pMarketValue;
+    TextView playerName, position, jerseyNumber, dateOfBirth, nationality, contractUntil, marketValue;
+//    String pName, pPosition, pJerseyNumber, pDateOfBirth, pNationality, pContractUntil, pMarketValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class PlayersActivity extends AppCompatActivity {
         nationality = (TextView) findViewById(R.id.nationality);
         contractUntil = (TextView) findViewById(R.id.contractUntil);
         marketValue = (TextView) findViewById(R.id.marketValue);
-
 
 
 //        pName = getIntent().getStringExtra("playerName");

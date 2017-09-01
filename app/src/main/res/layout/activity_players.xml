@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8f8c8c"
     tools:context="com.soccer.api.soccer_app.MainActivity"
     tools:listitem="@layout/players"
     android:id="@+id/players_layout">
