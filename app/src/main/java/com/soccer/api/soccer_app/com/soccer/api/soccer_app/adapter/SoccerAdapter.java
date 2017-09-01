@@ -12,25 +12,21 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.R.attr.name;
 
 /**
  * Created by admin on 2017/08/28.
  */
 
-public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHolder > {
+public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHolder> {
 
     //Will hold the information from the class Teams
     private ArrayList<Teams> mData;
     private Activity mActivity;
     private final OnItemClickListener listener;
 
-    public SoccerAdapter(ArrayList<Teams> data, Activity activity,  OnItemClickListener listener) {
+    public SoccerAdapter(ArrayList<Teams> data, Activity activity, OnItemClickListener listener) {
         this.mData = data;
         this.mActivity = activity;
         this.listener = listener;
@@ -38,7 +34,7 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     //Implementing onClick for imageView
     public interface OnItemClickListener {
-        void onItemClick(Teams teams,String uri ,String teamName, String teamCode, String teamSN, String teamValue);
+        void onItemClick(Teams teams, String uri, String teamName, String teamCode, String teamSN, String teamValue);
     }
 
     @Override
@@ -58,9 +54,6 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
         //Holder will hold set both team and coach names.
         holder.setName(teams.getName());
-        holder.setCode(teams.getCode());
-        holder.setShortName(teams.getShortName());
-        //holder.setSquadeMarketValue(teams.getSquadMarketValue());
         holder.setCrestUrl(teams.getCrestUrl());
 
         //Bitmap Factory
@@ -78,14 +71,13 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     @Override
     public int getItemCount() {
-        if(mData == null)
+        if (mData == null)
             return 0;
         return mData.size();
     }
 
 
-
-    public class SoccerHolder extends RecyclerView.ViewHolder{
+    public class SoccerHolder extends RecyclerView.ViewHolder {
 
         //Items found in the teams layout
         ImageView TeamsImgView;
@@ -98,25 +90,29 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
             //Content from Teams Layout
             TeamsImgView = (ImageView) itemView.findViewById(R.id.soccer_team);
             TeamsTxtView = (TextView) itemView.findViewById(R.id.team_name);
-            CodeTxtView = (TextView) itemView.findViewById(R.id.team_code);
-            ShortName = (TextView) itemView.findViewById(R.id.short_name);
-            //SquadeMarketValue = (TextView) itemView.findViewById(R.id.market_value);
 
         }
 
-        public void setName(String name){ TeamsTxtView.setText(name);}
-        public void setCode(String code) { CodeTxtView.setText(code);}
-        //public void setSquadeMarketValue(String squadeMarketValue) { SquadeMarketValue.setText(squadeMarketValue);}
-        public void setCrestUrl(String crestUrl){TeamsImgView.setImageURI(Uri.parse(crestUrl)); }
-        public void setShortName(String shortName){ShortName.setText(shortName);}
+        public void setName(String name) {
+            TeamsTxtView.setText(name);
+        }
+
+        public void setCode(String code) {
+            CodeTxtView.setText(code);
+        }
+
+        public void setCrestUrl(String crestUrl) {
+            TeamsImgView.setImageURI(Uri.parse(crestUrl));
+        }
+
+        public void setShortName(String shortName) {
+            ShortName.setText(shortName);
+        }
 
         //Method called to aid with bind
         public void bind(final Teams teams, final OnItemClickListener listener) {
             TeamsImgView.setImageURI(Uri.parse(teams.getCrestUrl()));
             TeamsTxtView.setText(teams.getName());
-            CodeTxtView.setText(teams.getCode());
-            ShortName.setText(teams.getShortName());
-            //SquadeMarketValue.setText(teams.getSquadMarketValue());
 
             Glide.with(mActivity).load(teams.getCrestUrl()).into(TeamsImgView);
             itemView.setOnClickListener(new View.OnClickListener() {
