@@ -33,15 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private SoccerAdapter mAdapter;
     private ArrayList<Teams> mTeamsCollections;
 
-    //OnClick Listeners for activity
-    ImageView imageView;
-    TextView textView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final Intent move = new Intent(MainActivity.this, TeamsActivity.class);
         init();
         mAdapter = new SoccerAdapter(mTeamsCollections, this, new SoccerAdapter.OnItemClickListener() {
@@ -63,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-
         mTeamRecylerView = (RecyclerView)findViewById(R.id.items_list);
         mTeamRecylerView.setLayoutManager(new LinearLayoutManager(this));
         mTeamRecylerView.setHasFixedSize(true);
@@ -124,22 +119,21 @@ public class MainActivity extends AppCompatActivity {
                     String crestUrl;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
-
                     JSONObject jLinks = jTeams.getJSONObject("_links");
+
+                    JSONObject jSelf = jLinks.getJSONObject("self");
+                    JSONObject jFixtures = jLinks.getJSONObject("fixtures");
+                    JSONObject jPlayers = jLinks.getJSONObject("players");
+
+                    links[0] = jSelf.getString("href");
+                    links[1] = jFixtures.getString("href");
+                    links[2] = jPlayers.getString("href");
 
                     name = jTeams.getString("name");
                     code = jTeams.getString("code");
                     shortName = jTeams.getString("shortName");
                     squadMarketValue = jTeams.getString("squadMarketValue");
                     crestUrl = jTeams.getString("crestUrl");
-                    Log.v("Images", crestUrl);
-                    //Testing links
-                    JSONObject jSelf = jLinks.getJSONObject("self");
-                    Log.v("Fixtures", jLinks.toString());
-                    JSONObject jFixtures = jLinks.getJSONObject("fixtures");
-                    JSONObject jPlayers = jLinks.getJSONObject("players");
-                    //Log.v("Players", jPlayers.toString());
-
 
                     Teams teams = new Teams();
                     teams.setName(name);

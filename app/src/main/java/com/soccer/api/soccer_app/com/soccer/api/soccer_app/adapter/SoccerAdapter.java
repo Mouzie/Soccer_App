@@ -1,6 +1,7 @@
 package com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter;
 
 import android.app.Activity;
+import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +10,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.caverock.androidsvg.SVG;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDecoder;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDrawable;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgSoftwareLayerSetter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -46,23 +56,25 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     @Override
     public void onBindViewHolder(SoccerHolder holder, int position) {
-        //Getting data from the class Teams
         Teams teams = mData.get(position);
 
         holder.bind(teams, listener);
-        holder.setName(teams.getName());
-        holder.setCrestUrl(teams.getCrestUrl());
 
-        //Bitmap Factory
-//        Bitmap bitmap = BitmapFactory.decodeStream(openInputStream(teams.getCrestUrl()));
-//        holder.TeamsImgView.setImageBitmap(bitmap);
+        GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(mActivity)
+                .using(Glide.buildStreamModelLoader(Uri.class, mActivity.getApplicationContext()), InputStream.class)
+                .from(Uri.class)
+                .as(SVG.class)
+                .transcode(new SvgDrawable(), PictureDrawable.class)
+                .sourceEncoder(new StreamEncoder())
+                .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
+                .decoder(new SvgDecoder())
+                .listener(new SvgSoftwareLayerSetter<Uri>());
 
-        //Glide implementation for image view
-//        Glide.with(mActivity)
-//                //.resize(250, 250)
-//                .load(teams.getCrestUrl())
-//                .into(holder.TeamsImgView);
-
+        requestBuilder
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .placeholder(R.mipmap.ic_launcher_round)
+                .load(Uri.parse(teams.getCrestUrl()))
+                .into(holder.TeamsImgView);
     }
 
 
@@ -76,9 +88,8 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
 
     public class SoccerHolder extends RecyclerView.ViewHolder {
 
-        //Items found in the teams layout
         ImageView TeamsImgView;
-        TextView CodeTxtView, TeamsTxtView, ShortName, SquadeMarketValue;
+        TextView TeamsTxtView;
 
 
         public SoccerHolder(View itemView) {
@@ -94,24 +105,14 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
             TeamsTxtView.setText(name);
         }
 
-        public void setCode(String code) {
-            CodeTxtView.setText(code);
-        }
-
-        public void setCrestUrl(String crestUrl) {
-            TeamsImgView.setImageURI(Uri.parse(crestUrl));
-        }
-
-        public void setShortName(String shortName) {
-            ShortName.setText(shortName);
-        }
-
         //Method called to aid with bind
         public void bind(final Teams teams, final OnItemClickListener listener) {
             TeamsImgView.setImageURI(Uri.parse(teams.getCrestUrl()));
             TeamsTxtView.setText(teams.getName());
 
-            Glide.with(mActivity).load(teams.getCrestUrl()).into(TeamsImgView);
+            Glide.with(mActivity)
+                    .load(teams.getCrestUrl())
+                    .into(TeamsImgView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

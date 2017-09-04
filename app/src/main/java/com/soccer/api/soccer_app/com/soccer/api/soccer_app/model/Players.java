@@ -5,8 +5,8 @@ package com.soccer.api.soccer_app.com.soccer.api.soccer_app.model;
  */
 
 public class Players {
-
-    private String playerName;
+    private String link;
+    private String name;
     private String position;
     private String jerseyNumber;
     private String dateOfBirth;
@@ -14,26 +14,24 @@ public class Players {
     private String contractUntil;
     private String marketValue;
 
-    public Players(String playerName, String position, String jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue) {
-        this.playerName = playerName;
-        this.position = position;
-        this.jerseyNumber = jerseyNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.nationality = nationality;
-        this.contractUntil = contractUntil;
-        this.marketValue = marketValue;
-    }
 
     public Players() {
     }
 
-
-    public String getPlayerName() {
-        return playerName;
+    public String getLink() {
+        return link;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPosition() {

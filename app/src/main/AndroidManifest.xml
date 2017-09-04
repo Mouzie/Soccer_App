@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TeamsActivity" />
-        <activity android:name=".PlayersActivity"></activity>
+        <activity android:name=".PlayersActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.SinglePlayerActivity"></activity>
     </application>
 
 </manifest>

@@ -17,10 +17,11 @@
 
             <ImageView
                 android:id="@+id/soccer_team"
+                android:padding="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"/>
 
             <TextView
                 android:id="@+id/team_name"

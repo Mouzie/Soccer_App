@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8f8c8c"
     tools:context="com.soccer.api.soccer_app.TeamsActivity">
 
     <RelativeLayout
@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/team_image"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop" />
 
@@ -53,22 +53,11 @@
             android:id="@+id/short_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/team_name"
-            android:layout_alignStart="@+id/team_name"
-            android:layout_below="@+id/market_value"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="24dp"
-            android:layout_weight="1"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/market_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/team_name"
             android:layout_gravity="bottom"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="25dp"
             android:layout_toEndOf="@+id/team_image"
             android:layout_toRightOf="@+id/team_image"
             android:layout_weight="1"
@@ -84,16 +73,42 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="17dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/player" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/btnFixtures"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginBottom="49dp"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_myplaces"
             android:layout_above="@+id/btnPlayer"
             android:layout_alignLeft="@+id/btnPlayer"
-            android:layout_alignStart="@+id/btnPlayer"
-            android:layout_marginBottom="16dp" />
+            android:layout_alignStart="@+id/btnPlayer" />
+
+        <TextView
+            android:id="@+id/txtFixtures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btnFixtures"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_toLeftOf="@+id/btnFixtures"
+            android:layout_toStartOf="@+id/btnFixtures"
+            android:text="Fixtures" />
+
+        <TextView
+            android:id="@+id/txtPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/txtFixtures"
+            android:layout_alignLeft="@+id/txtFixtures"
+            android:layout_alignRight="@+id/txtFixtures"
+            android:layout_alignStart="@+id/txtFixtures"
+            android:layout_below="@+id/btnFixtures"
+            android:text="Players" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

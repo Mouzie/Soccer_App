@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Players;
 
@@ -31,7 +33,10 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
 
     //OnClick method that will pass player information to view
     public interface OnItemClickListener{
-        void onItemClick(Players players, String playerName, String position, String jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue);
+        void onItemClick(Players players,
+                         String playerName,
+                         String position,
+                         String jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue);
     }
 
     @Override
@@ -45,17 +50,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
 
         //Using the Players class
         Players players = pData.get(position);
-
-        //Method to bind
         holder.bind(players, listener);
-
-        holder.setName(players.getPlayerName());
-        holder.setPosition(players.getPosition());
-        holder.setJerseryNumber(players.getJerseyNumber());
-        holder.setDateOfBirth(players.getDateOfBirth());
-        holder.setNationality(players.getNationality());
-        holder.setMarketValue(players.getMarketValue());
-
     }
 
     @Override
@@ -67,42 +62,36 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
 
     public class PlayerHolder extends RecyclerView.ViewHolder {
 
-        TextView playerName, position , jerseyNumber, dateOfBirth, nationality ,contractUntil, marketValue;
+        TextView txtPlayerName, txtPosition , txtJerseyNumber, txtDateOfBirth, txtNationality ,txtContractUntil, txtMarketValue;
 
         public PlayerHolder(View itemView) {
             super(itemView);
             //Place holder for the players view
-            playerName = (TextView) itemView.findViewById(R.id.playerName);
-            position = (TextView) itemView.findViewById(R.id.position);
-            jerseyNumber = (TextView) itemView.findViewById(R.id.jerseyNumber);
-            dateOfBirth = (TextView) itemView.findViewById(R.id.dateOfBirth);
-            nationality = (TextView) itemView.findViewById(R.id.nationality);
-            contractUntil = (TextView) itemView.findViewById(R.id.contractUntil);
-            marketValue = (TextView) itemView.findViewById(R.id.marketValue);
+            txtPlayerName = (TextView) itemView.findViewById(R.id.playerName);
+            txtPosition = (TextView) itemView.findViewById(R.id.position);
+            txtJerseyNumber = (TextView) itemView.findViewById(R.id.jerseyNumber);
+            txtDateOfBirth = (TextView) itemView.findViewById(R.id.dateOfBirth);
+            txtNationality = (TextView) itemView.findViewById(R.id.nationality);
+            txtContractUntil = (TextView) itemView.findViewById(R.id.contractUntil);
+            txtMarketValue = (TextView) itemView.findViewById(R.id.marketValue);
         }
 
-        public void setName(String playerName) {}
-        public void setPosition(String position) {}
-        public void setJerseryNumber(String jerseryNumber) {}
-        public void setDateOfBirth(String dateOfBirth){}
-        public void setNationality(String nationality){}
-        public void setMarketValue(String marketValue){}
 
-        //Binding elements to view
         public void bind(final Players players, final OnItemClickListener listener){
-            playerName.setText(players.getPlayerName());
-            position.setText(players.getPosition());
-            jerseyNumber.setText(players.getJerseyNumber());
-            dateOfBirth.setText(players.getDateOfBirth());
-            nationality.setText(players.getNationality());
-            contractUntil.setText(players.getContractUntil());
-            marketValue.setText(players.getMarketValue());
+
+            txtPlayerName.setText(players.getName());
+            txtPosition.setText(players.getPosition());
+            txtJerseyNumber.setText(players.getJerseyNumber());
+            txtDateOfBirth.setText(players.getDateOfBirth());
+            txtNationality.setText(players.getNationality());
+            txtContractUntil.setText(players.getContractUntil());
+            txtMarketValue.setText(players.getMarketValue());
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
                     listener.onItemClick(players,
-                            players.getPlayerName(),
+                            players.getName(),
                             players.getPosition(),
                             players.getJerseyNumber(),
                             players.getDateOfBirth(),

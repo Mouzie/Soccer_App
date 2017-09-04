@@ -3,4 +3,6 @@
 
     <!-- String used to access the Soccer APi-->
     <string name="football_api">http://api.football-data.org/v1/competitions/445/teams</string>
+
+    <string name="playerLink">http://api.football-data.org/v1/teams/57/players</string>
 </resources>
