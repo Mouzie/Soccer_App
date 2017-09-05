@@ -5,10 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Players;
 
@@ -31,7 +29,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
         this.listener = listener;
     }
 
-    //OnClick method that will pass player information to view
     public interface OnItemClickListener{
         void onItemClick(Players players,
                          String playerName,
@@ -48,7 +45,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
     @Override
     public void onBindViewHolder(PlayerAdapter.PlayerHolder holder, int position) {
 
-        //Using the Players class
         Players players = pData.get(position);
         holder.bind(players, listener);
     }

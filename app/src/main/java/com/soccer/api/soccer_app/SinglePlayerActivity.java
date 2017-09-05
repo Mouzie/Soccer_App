@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app;
+package com.soccer.api.soccer_app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

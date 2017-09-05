@@ -17,6 +17,7 @@ import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
 import com.soccer.api.soccer_app.R;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Fixtures;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDecoder;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDrawable;
@@ -42,14 +43,12 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         this.listener = listener;
     }
 
-    //Implementing onClick for imageView
     public interface OnItemClickListener {
         void onItemClick(Teams teams, String uri, String teamName, String teamCode, String teamSN, String teamValue);
     }
 
     @Override
     public SoccerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //The new view will be returned once it's inflated
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teams_layout, parent, false);
         return new SoccerHolder(view);
     }

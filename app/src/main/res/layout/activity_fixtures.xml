@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_fixture"
+    tools:itemList="@layout/fixtures"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soccer.api.soccer_app.SinglePlayerActivity">
+    tools:context="com.soccer.api.soccer_app.FixturesActivity">
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.RecyclerView>

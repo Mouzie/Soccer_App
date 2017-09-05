@@ -21,7 +21,10 @@
         </activity>
         <activity android:name=".TeamsActivity" />
         <activity android:name=".PlayersActivity" />
-        <activity android:name=".com.soccer.api.soccer_app.SinglePlayerActivity"></activity>
+        <activity android:name=".SinglePlayerActivity" />
+        <activity android:name=".FixturesActivity" />
+        <activity android:name=".SinlgeFixtureActivity" />
+        <activity android:name=".SingleFixtureActivity"></activity>
     </application>
 
 </manifest>

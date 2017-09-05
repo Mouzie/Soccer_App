@@ -11,14 +11,12 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.SinglePlayerActivity;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.PlayerAdapter;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Players;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -90,7 +88,7 @@ public class PlayersActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            Uri builtUri = Uri.parse(getString(R.string.playerLink));
+            Uri builtUri = Uri.parse(playerLink);
             URL url;
             try {
                 url = new URL(builtUri.toString());
