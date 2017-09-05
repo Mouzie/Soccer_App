@@ -24,7 +24,9 @@
         <activity android:name=".com.soccer.api.soccer_app.Controller.SinglePlayerActivity" />
         <activity android:name=".com.soccer.api.soccer_app.Controller.FixturesActivity" />
         <activity android:name=".SinlgeFixtureActivity" />
-        <activity android:name=".com.soccer.api.soccer_app.Controller.SingleFixtureActivity"></activity>
+        <activity android:name=".com.soccer.api.soccer_app.Controller.SingleFixtureActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.CompetitionActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.SingleCompetitionActivity"></activity>
     </application>
 
 </manifest>

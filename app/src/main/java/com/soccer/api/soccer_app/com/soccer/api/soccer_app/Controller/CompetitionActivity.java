@@ -10,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.soccer.api.soccer_app.R;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter.SoccerAdapter;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter.CompetitionAdapter;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Competition;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Teams;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,44 +28,48 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class CompetitionActivity extends AppCompatActivity {
 
-    private RecyclerView mTeamRecylerView;
-    private SoccerAdapter mAdapter;
-    private ArrayList<Teams> mTeamsCollections;
+    private RecyclerView cCompetitionRecylerView;
+    private CompetitionAdapter cAdapter;
+    private ArrayList<Competition> cCompetitionCollections;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        final Intent move = new Intent(MainActivity.this, TeamsActivity.class);
+        setContentView(R.layout.activity_competition);
+        
+        final Intent competition_move = new Intent(CompetitionActivity.this, SingleCompetitionActivity.class);
         init();
-        mAdapter = new SoccerAdapter(mTeamsCollections, this, new SoccerAdapter.OnItemClickListener() {
+        cAdapter = new CompetitionAdapter(cCompetitionCollections, this, new CompetitionAdapter.OnItemClickListener() {
 
             @Override
-            public void onItemClick(Teams teams, String uri, String teamName, String teamCode, String teamSN, String teamValue) {
-                move.putExtra("image",uri);
-                move.putExtra("team_name",teamName);
-                move.putExtra("code", teamCode);
-                move.putExtra("short_name", teamSN);
-                move.putExtra("team_player", teams.getLinks());
-                startActivity(move);
+            public void onItemClickListener(Competition competition, String id, String caption, String league, String year, String currentMatchday, String numberOfMatchdays, String numberOfTeams, String numberOfGames, String lastUpdated) {
+                competition_move.putExtra("ID", id);
+                competition_move.putExtra("Caption", caption);
+                competition_move.putExtra("League", league);
+                competition_move.putExtra("Year", year);
+                competition_move.putExtra("CurrentMatchDay", currentMatchday);
+                competition_move.putExtra("NumberOfMatchDays", numberOfMatchdays);
+                competition_move.putExtra("NumberOfTeams", numberOfTeams);
+                competition_move.putExtra("NumberOfGames", numberOfGames);
+                competition_move.putExtra("LastUpdate", lastUpdated);
+                startActivity(competition_move);
             }
         });
-        mTeamRecylerView.setAdapter(mAdapter);
+        cCompetitionRecylerView.setAdapter(cAdapter);
         new FetchData().execute();
-
     }
 
     private void init() {
-        mTeamRecylerView = (RecyclerView)findViewById(R.id.items_list);
-        mTeamRecylerView.setLayoutManager(new LinearLayoutManager(this));
-        mTeamRecylerView.setHasFixedSize(true);
-        mTeamsCollections = new ArrayList<>();
+        cCompetitionRecylerView = (RecyclerView)findViewById(R.id.competition_layout);
+        cCompetitionRecylerView.setLayoutManager(new LinearLayoutManager(this));
+        cCompetitionRecylerView.setHasFixedSize(true);
+        cCompetitionCollections = new ArrayList<>();
     }
 
-    public class FetchData extends AsyncTask<Void, Void, Void>{
+    public class FetchData extends AsyncTask<Void, Void, Void> {
 
         private String mSoccerAPI;
 
@@ -140,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     teams.setSquadMarketValue(squadMarketValue);
                     teams.setCrestUrl(crestUrl);
 
-                    mTeamsCollections.add(teams);
+                    //cCompetitionCollections.add(competion);
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -165,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid){
-            mAdapter.notifyDataSetChanged();
+            cAdapter.notifyDataSetChanged();
         }
     }
 }

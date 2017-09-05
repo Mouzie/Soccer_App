@@ -5,7 +5,8 @@ package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model;
  */
 
 public class Competition {
-    private int id;
+    private String[] links;
+    private String id;
     private String caption;
     private String league;
     private String year;
@@ -15,14 +16,22 @@ public class Competition {
     private String numberOfGames;
     private String lastUpdated;
 
+    public String[] getLinks() {
+        return links;
+    }
+
+    public void setLinks(String[] links) {
+        this.links = links;
+    }
+
     public Competition() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

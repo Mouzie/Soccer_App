@@ -58,13 +58,13 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
 
         public FixturesHolder(View itemView) {
             super(itemView);
-            txtDate = (TextView) itemView.findViewById(R.id.txtFixtureDate);
-            txtStatus = (TextView) itemView.findViewById(R.id.txtStatus);
-            txtMatchday = (TextView) itemView.findViewById(R.id.txtMatchDay);
-            txtHomeTeamName = (TextView) itemView.findViewById(R.id.txtHomeTeamName);
-            txtAwayTeamName = (TextView) itemView.findViewById(R.id.txtAwayTeamName);
-            txtResults = (TextView) itemView.findViewById(R.id.txtResults);
-            txtHalftime = (TextView) itemView.findViewById(R.id.txtHalfTime);
+            txtDate = itemView.findViewById(R.id.txtFixtureDate);
+            txtStatus = itemView.findViewById(R.id.txtStatus);
+            txtMatchday = itemView.findViewById(R.id.txtMatchDay);
+            txtHomeTeamName = itemView.findViewById(R.id.txtHomeTeamName);
+            txtAwayTeamName = itemView.findViewById(R.id.txtAwayTeamName);
+            txtResults = itemView.findViewById(R.id.txtResults);
+            txtHalftime = itemView.findViewById(R.id.txtHalfTime);
         }
 
         public void bind(final Fixtures fixtures, final FixturesAdapter.OnItemClickListener listener) {

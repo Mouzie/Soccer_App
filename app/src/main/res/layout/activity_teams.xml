@@ -15,10 +15,11 @@
 
         <ImageView
             android:id="@+id/team_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:padding="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true" />
 
         <TextView
             android:id="@+id/team_name"

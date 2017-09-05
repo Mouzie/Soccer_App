@@ -63,13 +63,13 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
         public PlayerHolder(View itemView) {
             super(itemView);
             //Place holder for the players view
-            txtPlayerName = (TextView) itemView.findViewById(R.id.playerName);
-            txtPosition = (TextView) itemView.findViewById(R.id.position);
-            txtJerseyNumber = (TextView) itemView.findViewById(R.id.jerseyNumber);
-            txtDateOfBirth = (TextView) itemView.findViewById(R.id.dateOfBirth);
-            txtNationality = (TextView) itemView.findViewById(R.id.nationality);
-            txtContractUntil = (TextView) itemView.findViewById(R.id.contractUntil);
-            txtMarketValue = (TextView) itemView.findViewById(R.id.marketValue);
+            txtPlayerName = itemView.findViewById(R.id.playerName);
+            txtPosition = itemView.findViewById(R.id.position);
+            txtJerseyNumber = itemView.findViewById(R.id.jerseyNumber);
+            txtDateOfBirth = itemView.findViewById(R.id.dateOfBirth);
+            txtNationality = itemView.findViewById(R.id.nationality);
+            txtContractUntil = itemView.findViewById(R.id.contractUntil);
+            txtMarketValue = itemView.findViewById(R.id.marketValue);
         }
 
 
