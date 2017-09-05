@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app.model;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model;
 
 /**
  * Created by admin on 2017/09/04.
@@ -11,8 +11,8 @@ public class Fixtures {
     private String matchDay;
     private String homeTeamName;
     private String awayTeamName;
-    private String results;
-    private String halftime;
+    private String[] results;
+    private String[] halftime;
 
     public Fixtures(){}
 
@@ -56,19 +56,20 @@ public class Fixtures {
         this.awayTeamName = awayTeamName;
     }
 
-    public String getResults() {
+    public String[] getResults() {
         return results;
     }
 
-    public void setResults(String results) {
+    public void setResults(String[] results) {
         this.results = results;
     }
 
-    public String getHalftime() {
+
+    public String[] getHalftime() {
         return halftime;
     }
 
-    public void setHalftime(String halftime) {
+    public void setHalftime(String[] halftime) {
         this.halftime = halftime;
     }
 }

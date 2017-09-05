@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     android:padding="10dp"
     android:background="#8f8c8c"
-    tools:context="com.soccer.api.soccer_app.MainActivity">
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.MainActivity">
 
         <RelativeLayout
             android:id="@+id/teams_layout"

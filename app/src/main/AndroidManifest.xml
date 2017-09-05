@@ -12,19 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".com.soccer.api.soccer_app.Controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TeamsActivity" />
-        <activity android:name=".PlayersActivity" />
-        <activity android:name=".SinglePlayerActivity" />
-        <activity android:name=".FixturesActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.TeamsActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.PlayersActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.SinglePlayerActivity" />
+        <activity android:name=".com.soccer.api.soccer_app.Controller.FixturesActivity" />
         <activity android:name=".SinlgeFixtureActivity" />
-        <activity android:name=".SingleFixtureActivity"></activity>
+        <activity android:name=".com.soccer.api.soccer_app.Controller.SingleFixtureActivity"></activity>
     </application>
 
 </manifest>

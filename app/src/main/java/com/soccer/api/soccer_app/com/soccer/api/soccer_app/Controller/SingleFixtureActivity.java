@@ -1,7 +1,9 @@
-package com.soccer.api.soccer_app;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.soccer.api.soccer_app.R;
 
 public class SingleFixtureActivity extends AppCompatActivity {
 

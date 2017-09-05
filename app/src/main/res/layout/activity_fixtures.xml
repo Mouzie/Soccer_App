@@ -7,6 +7,6 @@
     tools:itemList="@layout/fixtures"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soccer.api.soccer_app.FixturesActivity">
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.FixturesActivity">
 
 </android.support.v7.widget.RecyclerView>

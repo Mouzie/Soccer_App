@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soccer.api.soccer_app.MainActivity"
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.MainActivity"
     android:background="#8f8c8c"
     android:id="@+id/items_list"
     tools:listitem="@layout/teams_layout">

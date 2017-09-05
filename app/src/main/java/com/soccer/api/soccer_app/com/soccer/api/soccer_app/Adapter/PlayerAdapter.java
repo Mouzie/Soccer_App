@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.soccer.api.soccer_app.R;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Players;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Players;
 
 import java.util.ArrayList;
 

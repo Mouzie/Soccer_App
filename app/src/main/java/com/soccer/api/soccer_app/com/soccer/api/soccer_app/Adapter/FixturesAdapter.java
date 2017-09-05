@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.soccer.api.soccer_app.R;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Fixtures;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Fixtures;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
     private final OnItemClickListener listener;
 
     public interface OnItemClickListener{
-        void onItemClick(Fixtures fixtures, String date, String status, String matchDay, String homeTeamName, String awayTeamName, String results, String halftime);
+        void onItemClick(Fixtures fixtures, String date, String status, String matchDay, String homeTeamName, String awayTeamName, String[] results, String[] halftime);
     }
 
     public FixturesAdapter(ArrayList<Fixtures> data, Activity activity, OnItemClickListener listener) {
@@ -73,8 +73,8 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
             txtMatchday.setText(fixtures.getMatchDay());
             txtHomeTeamName.setText(fixtures.getHomeTeamName());
             txtAwayTeamName.setText(fixtures.getAwayTeamName());
-            txtResults.setText(fixtures.getResults());
-            txtHalftime.setText(fixtures.getHalftime());
+            txtResults.setText(fixtures.getResults()[0]+" - "+fixtures.getResults()[1]);
+            txtHalftime.setText(fixtures.getHalftime()[0] +" - "+fixtures.getHalftime()[1]);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

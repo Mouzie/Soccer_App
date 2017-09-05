@@ -5,6 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soccer.api.soccer_app.SinglePlayerActivity">
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.SinglePlayerActivity">
 
 </android.support.constraint.ConstraintLayout>

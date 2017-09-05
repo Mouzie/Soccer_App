@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,9 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.PlayerAdapter;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Players;
+import com.soccer.api.soccer_app.R;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter.PlayerAdapter;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Players;
 
 import org.json.JSONArray;
 import org.json.JSONException;

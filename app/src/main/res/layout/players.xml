@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="500dp"
     android:padding="10dp"
-    tools:context="com.soccer.api.soccer_app.PlayersActivity">
+    tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.PlayersActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

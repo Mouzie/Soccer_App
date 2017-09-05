@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter;
 
 import android.app.Activity;
 import android.graphics.drawable.PictureDrawable;
@@ -17,8 +17,7 @@ import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
 import com.soccer.api.soccer_app.R;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Fixtures;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Teams;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Teams;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDecoder;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDrawable;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgSoftwareLayerSetter;

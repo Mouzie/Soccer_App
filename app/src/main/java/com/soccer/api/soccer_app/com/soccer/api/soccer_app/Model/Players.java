@@ -1,4 +1,4 @@
-package com.soccer.api.soccer_app.com.soccer.api.soccer_app.model;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model;
 
 /**
  * Created by admin on 2017/08/30.

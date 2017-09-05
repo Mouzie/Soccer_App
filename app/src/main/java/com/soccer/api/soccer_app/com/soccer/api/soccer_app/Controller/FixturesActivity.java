@@ -1,7 +1,6 @@
-package com.soccer.api.soccer_app;
+package com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller;
 
 import android.content.Intent;
-import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -12,16 +11,9 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.GenericRequestBuilder;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.StreamEncoder;
-import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
-import com.caverock.androidsvg.SVG;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.adapter.FixturesAdapter;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.model.Fixtures;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDecoder;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgDrawable;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.svg.SvgSoftwareLayerSetter;
+import com.soccer.api.soccer_app.R;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter.FixturesAdapter;
+import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Fixtures;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,9 +56,10 @@ public class FixturesActivity extends AppCompatActivity {
         new FetchData().execute();
         tFixturesAdatpter = new FixturesAdapter(tFixturesCollections,this, new FixturesAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Fixtures fixtures, String date, String status, String matchday, String homeTeamName, String awayTeamName, String results, String halftime) {
+            public void onItemClick(Fixtures fixtures, String date, String status, String matchday, String homeTeamName, String awayTeamName, String[] results, String[] halftime) {
                 Toast.makeText(getApplicationContext(),"Player clicked",Toast.LENGTH_LONG);
                 fixtures_intent.putExtra("Date", date);
+                fixtures_intent.putExtra("Status", status);
                 fixtures_intent.putExtra("Matchday", matchday);
                 fixtures_intent.putExtra("HomeTeamName", homeTeamName);
                 fixtures_intent.putExtra("AwayTeamName", awayTeamName);
@@ -78,15 +71,6 @@ public class FixturesActivity extends AppCompatActivity {
 
         tFixturesRecylerView.setAdapter(tFixturesAdatpter);
 
-        GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(this)
-                .using(Glide.buildStreamModelLoader(Uri.class, getApplicationContext()), InputStream.class)
-                .from(Uri.class)
-                .as(SVG.class)
-                .transcode(new SvgDrawable(), PictureDrawable.class)
-                .sourceEncoder(new StreamEncoder())
-                .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
-                .decoder(new SvgDecoder())
-                .listener(new SvgSoftwareLayerSetter<Uri>());
     }
 
     private void init() {
@@ -145,8 +129,8 @@ public class FixturesActivity extends AppCompatActivity {
                     String matchday;
                     String homeTeamName;
                     String awayTeamName;
-                    String results;
-                    String halftime;
+                    String [] halftime = new String[2];
+                    String [] results = new String[2];
 
                     JSONObject jTeams = (JSONObject) fixturesArray.get(i);
 
@@ -158,8 +142,13 @@ public class FixturesActivity extends AppCompatActivity {
                     matchday = jTeams.getString("matchday");
                     homeTeamName = jTeams.getString("homeTeamName");
                     awayTeamName = jTeams.getString("awayTeamName");
-                    results = jTeams.getString("results");
-                    halftime = jTeams.getString("halftime");
+                    JSONObject jobResult = jTeams.getJSONObject("result");
+                    results[0] = jobResult.getString("goalsHomeTeam");
+                    results[1] = jobResult.getString("goalsAwayTeam");
+
+                    JSONObject ht = jobResult.getJSONObject("halfTime");
+                    halftime[0] = ht.getString("goalsHomeTeam");
+                    halftime[1] = ht.getString("goalsHomeTeam");
 
                     fixtures.setDate(date);
                     fixtures.setStatus(status);
