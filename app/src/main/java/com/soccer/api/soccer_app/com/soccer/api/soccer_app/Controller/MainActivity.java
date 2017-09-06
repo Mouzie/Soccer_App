@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for(int i = 0; i < teamsArray.length(); i++){
                     Log.v("Success", i + "");
-                    String [] links = new String[3];
+                    String [] links = new String[4];
                     String name;
                     String code;
                     String shortName;
@@ -119,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jSelf = jLinks.getJSONObject("self");
                     JSONObject jFixtures = jLinks.getJSONObject("fixtures");
                     JSONObject jPlayers = jLinks.getJSONObject("players");
-                    //JSONObject jLogTable = jLinks.getJSONObject("leagueTable");
+                    JSONObject jLogTable = jLinks.getJSONObject("leagueTable");
 
                     links[0] = jSelf.getString("href");
                     links[1] = jFixtures.getString("href");
                     links[2] = jPlayers.getString("href");
-                    //links[3] = jLogTable.getString("href");
+                    links[3] = jLogTable.getString("href");
 
                     name = jTeams.getString("name");
                     code = jTeams.getString("code");

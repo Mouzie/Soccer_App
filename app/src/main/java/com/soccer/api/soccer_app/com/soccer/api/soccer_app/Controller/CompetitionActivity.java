@@ -12,7 +12,6 @@ import android.util.Log;
 import com.soccer.api.soccer_app.R;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Adapter.CompetitionAdapter;
 import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Competition;
-import com.soccer.api.soccer_app.com.soccer.api.soccer_app.Model.Teams;
 
 
 import org.json.JSONArray;
@@ -33,6 +32,8 @@ public class CompetitionActivity extends AppCompatActivity {
     private RecyclerView cCompetitionRecylerView;
     private CompetitionAdapter cAdapter;
     private ArrayList<Competition> cCompetitionCollections;
+
+    String competitionLink;
 
 
     @Override
@@ -77,7 +78,7 @@ public class CompetitionActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            Uri builtUri = Uri.parse(getString(R.string.football_api));
+            Uri builtUri = Uri.parse(competitionLink);
             URL url;
             try{
                 url = new URL(builtUri.toString());
@@ -113,11 +114,15 @@ public class CompetitionActivity extends AppCompatActivity {
                 for(int i = 0; i < teamsArray.length(); i++){
                     Log.v("Success", i + "");
                     String [] links = new String[3];
-                    String name;
-                    String code;
-                    String shortName;
-                    String squadMarketValue;
-                    String crestUrl;
+                    String id;
+                    String caption;
+                    String league;
+                    String year;
+                    String currentMatchDay;
+                    String numberOfMatchDays;
+                    String numberOfTeams;
+                    String numberOfGames;
+                    String lastUpdate;
 
                     JSONObject jTeams = (JSONObject) teamsArray.get(i);
                     JSONObject jLinks = jTeams.getJSONObject("_links");
@@ -125,28 +130,35 @@ public class CompetitionActivity extends AppCompatActivity {
                     JSONObject jSelf = jLinks.getJSONObject("self");
                     JSONObject jFixtures = jLinks.getJSONObject("fixtures");
                     JSONObject jPlayers = jLinks.getJSONObject("players");
-                    //JSONObject jLogTable = jLinks.getJSONObject("leagueTable");
+                    JSONObject jLogTable = jLinks.getJSONObject("leagueTable");
 
                     links[0] = jSelf.getString("href");
                     links[1] = jFixtures.getString("href");
                     links[2] = jPlayers.getString("href");
-                    //links[3] = jLogTable.getString("href");
+                    links[3] = jLogTable.getString("href");
 
-                    name = jTeams.getString("name");
-                    code = jTeams.getString("code");
-                    shortName = jTeams.getString("shortName");
-                    squadMarketValue = jTeams.getString("squadMarketValue");
-                    crestUrl = jTeams.getString("crestUrl");
+                    id = jTeams.getString("id");
+                    caption = jTeams.getString("caption");
+                    league = jTeams.getString("league");
+                    year = jTeams.getString("year");
+                    currentMatchDay = jTeams.getString("currentMatchDay");
+                    numberOfMatchDays = jTeams.getString("numberOfMatchDays");
+                    numberOfTeams = jTeams.getString("numberOfTeams");
+                    numberOfGames = jTeams.getString("numberOfGames");
+                    lastUpdate = jTeams.getString("lastUpdate");
 
-                    Teams teams = new Teams();
-                    teams.setName(name);
-                    teams.setCode(code);
-                    teams.setLinks(links);
-                    teams.setShortName(shortName);
-                    teams.setSquadMarketValue(squadMarketValue);
-                    teams.setCrestUrl(crestUrl);
+                    Competition competition = new Competition();
+                    competition.setId(id);
+                    competition.setCaption(caption);
+                    competition.setLeague(league);
+                    competition.setYear(year);
+                    competition.setCurrentMatchday(currentMatchDay);
+                    competition.setNumberOfMatchDays(numberOfMatchDays);
+                    competition.setNumberOfTeams(numberOfTeams);
+                    competition.setNumberOfGames(numberOfGames);
+                    competition.setLastUpdated(lastUpdate);
 
-                    //cCompetitionCollections.add(competion);
+                    cCompetitionCollections.add(competition);
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
