@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.MainActivity"
-    android:background="#8f8c8c"
+    android:background="@drawable/logo"
     android:id="@+id/items_list"
     tools:listitem="@layout/teams_layout">
 

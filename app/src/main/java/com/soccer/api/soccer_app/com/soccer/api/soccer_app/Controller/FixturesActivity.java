@@ -133,10 +133,8 @@ public class FixturesActivity extends AppCompatActivity {
                     String [] results = new String[2];
 
                     JSONObject jTeams = (JSONObject) fixturesArray.get(i);
-
                     Fixtures fixtures = new Fixtures();
                     Log.v("Fixtures", fixturesArray + "");
-
                     date = jTeams.getString("date");
                     status = jTeams.getString("status");
                     matchday = jTeams.getString("matchday");
@@ -149,7 +147,6 @@ public class FixturesActivity extends AppCompatActivity {
                     JSONObject ht = jobResult.getJSONObject("halfTime");
                     halftime[0] = ht.getString("goalsHomeTeam");
                     halftime[1] = ht.getString("goalsHomeTeam");
-
                     fixtures.setDate(date);
                     fixtures.setStatus(status);
                     fixtures.setMatchDay(matchday);

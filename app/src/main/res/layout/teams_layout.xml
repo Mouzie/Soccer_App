@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="10dp"
-    android:background="#8f8c8c"
     tools:context="com.soccer.api.soccer_app.com.soccer.api.soccer_app.Controller.MainActivity">
 
         <RelativeLayout
+            android:background="@android:color/transparent"
             android:id="@+id/teams_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,11 +17,11 @@
 
             <ImageView
                 android:id="@+id/soccer_team"
-                android:padding="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/team_name"
