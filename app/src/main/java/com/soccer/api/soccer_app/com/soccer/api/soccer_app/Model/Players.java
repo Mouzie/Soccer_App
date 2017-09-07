@@ -14,7 +14,6 @@ public class Players {
     private String contractUntil;
     private String marketValue;
 
-
     public Players() {
     }
 

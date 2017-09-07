@@ -93,7 +93,6 @@ public class SoccerAdapter extends RecyclerView.Adapter<SoccerAdapter.SoccerHold
         public SoccerHolder(View itemView) {
             super(itemView);
 
-            //Content from Teams Layout
             TeamsImgView = itemView.findViewById(R.id.soccer_team);
             TeamsTxtView = itemView.findViewById(R.id.team_name);
 

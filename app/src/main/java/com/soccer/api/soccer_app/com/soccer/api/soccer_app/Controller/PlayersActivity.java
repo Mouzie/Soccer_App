@@ -58,7 +58,7 @@ public class PlayersActivity extends AppCompatActivity {
         pAdapter = new PlayerAdapter(pPlayersCollections,this, new PlayerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Players players, String playerName, String position, String jerseyNumber, String dateOfBirth, String nationality, String contractUntil, String marketValue) {
-                Toast.makeText(getApplicationContext(),"Player clicked",Toast.LENGTH_LONG);
+                //Toast.makeText(getApplicationContext(),"Player clicked",Toast.LENGTH_LONG);
                 playersIntent.putExtra("Name", playerName);
                 playersIntent.putExtra("Position", position);
                 playersIntent.putExtra("JerseyNumber", jerseyNumber);
